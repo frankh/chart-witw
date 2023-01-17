@@ -61,11 +61,23 @@ spec:
           - name: ALLOWED_HOSTS
             value: "*"
           - name: SOCIAL_AUTH_GOOGLE_OAUTH2_KEY
-            value: {{ .Values.oauthKey }}
+            valueFrom:
+              secretKeyRef:
+                name: credentials
+                key: oauthKey
+                optional: false
           - name: SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET
-            value: {{ .Values.oauthSecret }}
+            valueFrom:
+              secretKeyRef:
+                name: credentials
+                key: oauthSecret
+                optional: false
           - name: MAPS_API_KEY
-            value: {{ .Values.mapsKey }}
+            valueFrom:
+              secretKeyRef:
+                name: credentials
+                key: mapsKey
+                optional: false
           ports:
             - name: http
               containerPort: 8000

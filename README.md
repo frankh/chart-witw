@@ -22,6 +22,15 @@ You'll also need a few secrets to get it set up:
 
 These can be created in the Google Cloud console.
 
+Once you have these, create your Kubernetes secrets:
+
+
+> **Warning**
+> You must create these secrets or the chart will not deploy. Ensure they are in the same namespace
+```
+kubectl create secret generic credentials --from-literal=mapsKey=<secret> --from-literal=oauthKey=<secret> --from-literal=oauthSecret=<secret>
+```
+
 Installing the Helm Chart
 =========================
 
