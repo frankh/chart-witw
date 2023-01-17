@@ -10,6 +10,9 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 teamName: Prehog
+mapsKey: ""
+oauthKey: ""
+oauthSecret: ""
 
 postgres:
   # Whether to run postgres in Kubernetes or use and external service

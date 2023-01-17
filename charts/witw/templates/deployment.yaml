@@ -61,11 +61,11 @@ spec:
           - name: ALLOWED_HOSTS
             value: "*"
           - name: SOCIAL_AUTH_GOOGLE_OAUTH2_KEY
-            value: "1080123246112-gbb70mfutvde7jhec17ginbh98gh4lbe.apps.googleusercontent.com"
+            value: {{ .Values.oauthKey }}
           - name: SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET
-            value: "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"
+            value: {{ .Values.oauthSecret }}
           - name: MAPS_API_KEY
-            value: "AIzaSyDe6mLan-xsFkEYwIj93Jph83cFxOHPu7c"
+            value: {{ .Values.mapsKey }}
           ports:
             - name: http
               containerPort: 8000
