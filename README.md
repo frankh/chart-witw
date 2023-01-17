@@ -37,7 +37,7 @@ Installing the Helm Chart
 Run Helm install with your API keys passed in.
 
 ```
-helm upgrade --install witw charts/witw --wait
+helm upgrade --install witw oci://registry-1.docker.io/frankh/witw --wait
 ```
 
 > Note: For production, also set the DNS entry for your chosen domain name! `--set ingress.hosts[0].host=https://whereintheworld.app`
