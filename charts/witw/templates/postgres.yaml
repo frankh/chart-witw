@@ -7,6 +7,7 @@ metadata:
     {{- include "witw.labels" . | nindent 4 }}
 spec:
   replicas: 1
+  serviceName: {{ include "witw.fullname" . }}-postgres
   selector:
     matchLabels:
       {{- include "witw.selectorLabelsPostgres" . | nindent 6 }}
@@ -32,6 +33,7 @@ spec:
           volumeMounts:
           - name: db
             mountPath: /var/lib/postgresql/data
+            subPath: postgres
           ports:
           - name: postgres
             containerPort: 5432
