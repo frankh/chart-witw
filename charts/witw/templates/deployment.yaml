@@ -33,8 +33,9 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command: ["/bin/sh"]
-          args: "python manage.py migrate && python manage.py cities --import=all"
+          command: ["/bin/sh", "-c"]
+          args:
+          - python manage.py migrate && python manage.py shell -c 'from cities.models import City; import os; exit(City.objects.count() == 0)' || python manage.py cities --import=all
           env:
           - name: DB_HOST
             value: {{ include "witw.fullname" . }}-postgres
