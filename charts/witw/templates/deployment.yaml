@@ -56,8 +56,10 @@ spec:
           env:
           - name: DB_HOST
             value: {{ include "witw.fullname" . }}-postgres
+            {{- if not .Values.ingress.tls }}
           - name: DEBUG
             value: "true"
+            {{- end }}
           - name: ALLOWED_HOSTS
             value: "*"
           - name: SOCIAL_AUTH_GOOGLE_OAUTH2_KEY
