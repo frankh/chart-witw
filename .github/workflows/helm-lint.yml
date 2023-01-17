@@ -1,0 +1,26 @@
+name: Helm Lint
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Install helm
+        run: https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+      # Runs a set of commands using the runners shell
+      - name: Helm lint
+        run: helm lint charts/witw
